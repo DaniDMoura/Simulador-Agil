@@ -1,12 +1,72 @@
-# React + Vite
+# SimuladorAgil Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This folder contains the frontend for **SimuladorAgil**, a web application for generating and taking personalized ENEM practice exams ("simulados"). The client is built with modern JavaScript, using [Vite](https://vitejs.dev/) as the build tool.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Fast, modern frontend with Vite
+- React-based UI (assumed based on standard frontend structure)
+- Responsive design for use on desktop and mobile
+- Communicates with the FastAPI backend to fetch and submit simulado data
 
-## Expanding the ESLint configuration
+## Requirements
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Node.js >= 18 (recommended)
+- npm >= 9 or [pnpm](https://pnpm.io/) (optional)
+
+## Installation
+
+1. Navigate to the `client` directory:
+
+   ```bash
+   cd client
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   # or
+   pnpm install
+   ```
+
+## Running the Client (Development)
+
+Start the development server:
+
+```bash
+npm run dev
+# or
+pnpm dev
+```
+
+The app will be available at [http://localhost:5173](http://localhost:5173) by default.
+
+## Building for Production
+
+To build the app for production:
+
+```bash
+npm run build
+# or
+pnpm build
+```
+
+The output will be in the `dist/` folder.
+
+## Project Structure
+
+- `public/` — Static assets
+- `src/` — Main source code (components, pages, styles, etc.)
+- `index.html` — HTML entry point
+- `package.json` — Project metadata and scripts
+- `vite.config.js` — Vite configuration
+- `.gitignore`, `eslint.config.js` — Development tooling
+
+## License
+
+Distributed under the GNU GPL v3.0. See the root [LICENSE](../LICENSE) file for details.
+
+---
+
+Feel free to contribute or open issues!
