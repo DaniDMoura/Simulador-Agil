@@ -7,7 +7,7 @@ import { PDFDownloadLink } from '@react-pdf/renderer'
 
 
 const fetchUsers = async (number) => {
-  const res = await axios.get(`http://127.0.0.1:8000/api/v1/gerar_simulado?numero=${number}`)
+  const res = await axios.get(`https://api-simulado-generator.fly.dev/api/v1/gerar_simulado?numero=${number}`)
   return res.data
 }
 
