@@ -1,59 +1,91 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useMemo } from "react";
 import styles from "./App.module.css";
 import Simulado from "./Simulado.jsx";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import { Buffer } from "buffer";
 
+window.Buffer = Buffer;
 
 const frases = [
-    'Grandes conquistas começam com pequenos cliques...',
-    'A paciência é uma virtude... principalmente esperando PDF.',
-    'Você está a poucos segundos de virar o rei do simulado.',
-    'Persistência constrói excelência (e simulado também).',
-    'Já seguiu @danilosmoura_ no Instagram?',
-    'E no Github? @DaniDMoura',
-    'Seu esforço está prestes a virar um arquivo .pdf!',
-    'Esse Danilo é um cara muito maneiro 😎👍',
-    'A jornada é longa... mas o simulado é gerado em breve.',
-    'A excelência leva tempo... e o seu PDF também (infelizmente).',
-    'Respira fundo, que o sistema tá processando com carinho.',
-    'Está lento? Calma, o servidor tá correndo com chinelo!',
-    'Já foi... só falta o universo alinhar os bytes agora.',
-    'Você clicou. Agora é fé, foco e F5 (mentira, não aperta).',
-    'Mais rápido que uma tartaruga com sono.',
-    'O PDF tá vindo... só parou pra tomar um café antes. ☕',
-    'Não é magia, é processamento assíncrono!',
-    'Aguarde enquanto invocamos o espírito do Enem.',
-    'Relaxa... até foguete tem tempo de espera.',
-    'Simulado quase pronto... já pode pensar na desculpa pra não fazer.',
-    'Esse Danilo é um cara muito maneiro 😎👍'
-  ];
+  "Grandes conquistas começam com pequenos cliques...",
+  "A paciência é uma virtude... principalmente esperando PDF.",
+  "Você está a poucos segundos de virar o rei do simulado.",
+  "Esse Danilo é um cara muito maneiro 😎👍",
+  "Já seguiu @danilosmoura_ no Instagram?",
+  "E no Github? @DaniDMoura",
+  "Seu esforço está prestes a virar um arquivo .pdf!",
+  "Esse Danilo é um cara muito maneiro 😎👍",
+  "A jornada é longa... mas o simulado é gerado em breve.",
+  "A excelência leva tempo... e o seu PDF também (infelizmente).",
+  "Respira fundo, que o sistema tá processando com carinho.",
+  "Está lento? Calma, o servidor tá correndo com chinelo!",
+  "Já foi... só falta o universo alinhar os bytes agora.",
+  "Você clicou. Agora é fé, foco e F5 (mentira, não aperta).",
+  "Mais rápido que uma tartaruga com sono.",
+  "O PDF tá vindo... só parou pra tomar um café antes. ☕",
+  "Não é magia, é processamento assíncrono!",
+  "Aguarde enquanto invocamos o espírito do Enem.",
+  "Relaxa... até foguete tem tempo de espera.",
+  "Simulado quase pronto... já pode pensar na desculpa pra não fazer.",
+  "Esse Danilo é um cara muito maneiro 😎👍",
+];
 
-const fetchUsers = async (number) => {
+const fetchUsers = async ({
+  number,
+  cienciasNatureza,
+  matematica,
+  linguagens,
+  cienciasHumanas,
+}) => {
   const res = await axios.get(
-    `https://api-simulado-generator.onrender.com/api/v1/gerar_simulado?numero=${number}`
+    "https://api-simulado-generator.onrender.com/api/v1/gerar_simulado",
+    {
+      params: {
+        numero: number,
+        ciencias_natureza: cienciasNatureza,
+        matematica: matematica,
+        linguagens: linguagens,
+        ciencias_humanas: cienciasHumanas,
+      },
+    }
   );
   return res.data;
 };
 
-export function App() {
+function App() {
   const [numero, setNumero] = useState(1);
 
+  const [activeSettings, setActiveSettings] = useState(false);
 
+  const [cienciasNatureza, setCienciasNatureza] = useState(true);
+  const [matematica, setMatematica] = useState(true);
+  const [linguagens, setLinguagens] = useState(true);
+  const [cienciasHumanas, setCienciasHumanas] = useState(true);
 
-  const [frase, setFrase] = useState("ㅤ")
-  const i = useRef(0)
-  const intervalId = useRef(null)
-  const timeoutId = useRef(null)
-
+  const [frase, setFrase] = useState("ㅤ");
+  const i = useRef(0);
+  const intervalId = useRef(null);
+  const timeoutId = useRef(null);
 
   const mutation = useMutation({
     mutationFn: fetchUsers,
   });
 
+  const pdfDocument = useMemo(() => {
+    if (!mutation.data) return null;
+    return <Simulado questions={mutation.data} />;
+  }, [mutation.data]);
+
   const handleClick = () => {
-    mutation.mutate(numero);
+    mutation.mutate({
+      number: numero,
+      cienciasNatureza: cienciasNatureza,
+      matematica: matematica,
+      linguagens: linguagens,
+      cienciasHumanas: cienciasHumanas,
+    });
   };
 
   const handleUpdate = (e) => {
@@ -67,19 +99,17 @@ export function App() {
         intervalId.current = setInterval(() => {
           i.current += 1;
           setFrase(frases[i.current % frases.length]);
-        }, 5000)}, 5000
-      )
-
+        }, 5000);
+      }, 5000);
     } else {
       clearInterval(intervalId.current);
       i.current = 0;
     }
     return () => {
-      clearInterval(intervalId.current)
-      clearTimeout(timeoutId)
+      clearInterval(intervalId.current);
+      clearTimeout(timeoutId);
     };
   }, [mutation.isPending]);
-
 
   return (
     <div>
@@ -88,7 +118,7 @@ export function App() {
           <span>Simulado Ágil</span>
           <span className={styles.lightning}>⚡</span>
         </h1>
-        <span>Crie sua própia prova do Enem</span>
+        <span>Crie sua própria prova do Enem</span>
       </div>
       <div className={styles.container}>
         <div className={styles.generator}>
@@ -136,7 +166,7 @@ export function App() {
                 <span>Simulado Pronto</span>
                 <PDFDownloadLink
                   className={styles.pdf}
-                  document={<Simulado questions={mutation.data} />}
+                  document={pdfDocument}
                   fileName="simulado.pdf"
                 >
                   {({ loading }) => (
@@ -155,6 +185,99 @@ export function App() {
           <button onClick={handleClick} disabled={mutation.isPending}>
             <span>Gerar Simulado</span>
           </button>
+          {activeSettings && (
+            <div className={styles.activeSettings}>
+              <div className={styles.inActiveSettings}>
+                <div className={styles.close}>
+                  <button
+                    onClick={() => {
+                      setActiveSettings(false);
+                    }}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-x-lg"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                    </svg>
+                  </button>
+                  <br />
+                  <span style={{color:'white'}}>
+                    Filtros
+                  </span>
+                  <hr/>
+                </div>
+                <div className={styles.settingsButtons}>
+                  <button
+                    style={{
+                      textDecoration: cienciasNatureza
+                        ? "none"
+                        : "line-through",
+                    }}
+                    onClick={() => setCienciasNatureza(!cienciasNatureza)}
+                  >
+                    Ciências da Natureza
+                  </button>
+                  <button
+                    style={{
+                      textDecoration: matematica ? "none" : "line-through",
+                    }}
+                    onClick={() => setMatematica(!matematica)}
+                  >
+                    Matemática
+                  </button>
+
+                  <button
+                    style={{
+                      textDecoration: linguagens ? "none" : "line-through",
+                    }}
+                    onClick={() => setLinguagens(!linguagens)}
+                  >
+                    Linguagens
+                  </button>
+
+                  <button
+                    style={{
+                      textDecoration: cienciasHumanas ? "none" : "line-through",
+                    }}
+                    onClick={() => setCienciasHumanas(!cienciasHumanas)}
+                  >
+                    Ciências Humanas
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div className={styles.settings}>
+            <button
+              onClick={() => {
+                setActiveSettings(true);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-settings2-icon lucide-settings-2"
+              >
+                <path d="M20 7h-9" />
+                <path d="M14 17H5" />
+                <circle cx="17" cy="17" r="3" />
+                <circle cx="7" cy="7" r="3" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
       <div className={styles.bottom}>

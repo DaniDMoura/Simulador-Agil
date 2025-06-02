@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
   },
   context: { fontSize: 12, marginBottom: 10, marginTop: 5 },
   alternativa: { fontSize: 12, marginLeft: 10 },
-  alternativeImage: { maxWidth: 150, maxHeight: 100, marginBottom: 10 },
-  image: { maxHeight: 300, maxWidth: 300, marginTop: 10 },
+  alternativeImage: { maxWidth: 100, maxHeight: 100, marginBottom: 10 },
+  image: { maxHeight: 250, maxWidth: 250, marginTop: 10 },
 });
 
 const Simulado = ({ questions }) => {

@@ -13,6 +13,51 @@ button{
   justify-content: center;
   z-index: 9999;
 }
+.activeSettings{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.activeSettings .inActiveSettings{
+  background-color: hsla(0, 0%, 10%);
+  padding: 50px 40px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: appear 0.3s ease;
+}
+.activeSettings .inActiveSettings .settingsButtons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.activeSettings .inActiveSettings .close button{
+  background-color: hsla(0, 0%, 20%);
+  display: flex;
+  align-items: center;
+  margin-top: 0;
+}
+.activeSettings .inActiveSettings .settingsButtons button{
+  background-color: hsla(0, 0%, 20%);
+  padding: 20px 10px;
+  margin-top: 0;
+}
+.activeSettings .inActiveSettings .settingsButtons button:hover{
+  background-color: hsla(0, 0%, 15%);
+  padding: 20px 10px;
+}
+.activeSettings .inActiveSettings .settingsButtons button:active{
+  background-color: hsla(0, 0%, 10%);
+  padding: 20px 10px;
+}
 .inloader{
   display: flex;
   flex-direction: column;
@@ -29,7 +74,7 @@ button{
   position: sticky;
 }
 .generator{
-  text-align: center;
+  position: relative;
   padding: 70px 80px;
   margin-top: 0px;
   border-radius: 30px;
@@ -37,7 +82,6 @@ button{
   transform-origin: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   border: 3px solid hsla(0, 0%, 20%, 0.3);
 }
 .generator input{
@@ -53,7 +97,6 @@ button{
   border-radius: 10px;
   padding: 10px ;
   margin-top: 10px;
-  width: 100%;
   cursor: pointer;
   transition: 0.2s;
 }
@@ -72,6 +115,33 @@ button{
   justify-content: center;
   height: 75vh;
   align-items: center;
+}
+.settings{
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+
+}
+.settings button{
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  border-radius: 100%;
+  color: hsla(0, 0%, 30%);
+  padding: 6px 0;
+}
+.settings button:hover{
+  color: hsla(0, 0%, 70%, 0.9);
+  background-color: transparent;
+}
+.settings button:active{
+  background-color: transparent;
+  color: hsla(0, 0%, 60%, 0.9);
+}
+.settings button svg{
+  height: 20px;
+  width: 20px;
 }
 .result{
   display: flex;
