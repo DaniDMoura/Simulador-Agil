@@ -9,7 +9,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=['http://localhost:5173',
                    'https://simulado-agil.vercel.app',
-                   'simulado.site'],
+                   'https://www.simulado.site'],
     allow_credentials=True,
     allow_methods=['*'],
     allow_headers=['*'],
@@ -21,10 +21,12 @@ app.add_middleware(
 )
 async def gerar_simulado(
     numero: int,
+    min_year: int = 2010,
+    max_year: int = 2023,
     ciencias_natureza: bool = True,
     ciencias_humanas: bool = True,
     matematica: bool = True,
-    linguagens: bool = True
+    linguagens: bool = True,
     ):
 
     if (not ciencias_natureza and
@@ -40,5 +42,7 @@ async def gerar_simulado(
                                    ciencias_humanas=ciencias_humanas,
                                    linguagens=linguagens,
                                    matematica=matematica,
-                                   ciencias_natureza=ciencias_natureza)
+                                   ciencias_natureza=ciencias_natureza,
+                                   min_year=min_year,
+                                   max_year=max_year)
     return simulado

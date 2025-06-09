@@ -11,7 +11,7 @@ import gabarito from "./assets/gabarito.png";
 
 const styles = StyleSheet.create({
   page: {
-    paddingVertical: 10
+    paddingVertical: 10,
   },
   questionTitle: {
     fontSize: 13,

@@ -1,9 +1,15 @@
-# SimuladorAgil
+<div align="center">
+  <img width="192" src="client/public/icons/icon-192.png">
+  <p></p>
+  <p>Simulador<b>Ágil</b></p>
+  <p>Simulador inteligente que gera simulados personalizados do ENEM</p>
+</div>
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
-[![Deploy](https://img.shields.io/badge/online-demo-brightgreen)](https://simulado-agil.vercel.app/)
+# SimuladorÁgil
 
-SimuladorAgil é um simulador inteligente que gera simulados personalizados do ENEM em tempo real. O objetivo é proporcionar uma experiência otimizada de preparação para o ENEM, oferecendo questões adaptadas ao perfil do estudante e fornecendo feedback personalizado, incluindo exportação de relatórios em PDF.
+[![Github-sponsors](https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#EA4AAA)](https://github.com/sponsors/DaniDMoura)  [![Instagram](https://img.shields.io/badge/Instagram-30363D?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/danilosmoura_) [![LinkedIn](https://img.shields.io/badge/LinkedIn-30363D?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/danilosantos-moura)
+
+SimuladorÁgil é um simulador inteligente que gera simulados personalizados do ENEM em tempo real. O objetivo é proporcionar uma experiência otimizada de preparação para o ENEM, oferecendo questões adaptadas ao perfil do estudante e fornecendo feedback personalizado, incluindo exportação de relatórios em PDF.
 
 ---
 
@@ -21,7 +27,7 @@ SimuladorAgil é um simulador inteligente que gera simulados personalizados do E
 
 ## Demonstração
 
-Acesse a versão online: [https://simulado-agil.vercel.app/](https://simulado-agil.vercel.app/)
+Acesse a versão online: [https://simulado.site](https://simulado.site)
 
 ---
 
@@ -31,34 +37,34 @@ Acesse a versão online: [https://simulado-agil.vercel.app/](https://simulado-ag
 
 - **Linguagem:** Python
 - **Framework:** FastAPI
-- **Hospedagem:** [Fly.io](https://api-simulado-generator.fly.dev/)
-- **Documentação da API:** [https://api-simulado-generator.fly.dev/docs](https://api-simulado-generator.fly.dev/docs)
+- **Hospedagem:** [Render](https://api-simulado-generator.onrender.com)
+- **Documentação da API:** [https://api-simulado-generator.onrender.com/docs](https://api-simulado-generator.onrender.com/docs)
 
 ### Frontend
 
-- **Linguagens:** JavaScript
+- **Linguagem:** JavaScript
 - **Framework:** React
-- **Empacotador:** Vite
+- **Build Tool:** Vite
 - **Estilização:** CSS3
 - **Principais Bibliotecas:**
   - **axios:** requisições HTTP à API
-  - **react-query:** gerenciamento e cache de dados assíncronos
+  - **react-query:** gerenciamento de dados assíncronos
   - **@react-pdf/renderer:** geração dinâmica de relatórios PDF
 
 ### Deploy
 
-- **Frontend:** [Vercel](https://simulado-agil.vercel.app/)
-- **API Backend:** [Fly.io](https://api-simulado-generator.fly.dev/)
+- **Frontend:** [Vercel](https://simulado.site)
+- **API Backend:** [Render](https://api-simulado-generator.onrender.com)
 
 ---
 
 ## Principais Funcionalidades
 
-- **Simulados Personalizados:** Geração dinâmica de simulados com base no desempenho e preferências do usuário.
-- **Banco de Questões do ENEM:** Utiliza questões reais e/ou baseadas no formato oficial do exame.
-- **PDFs Personalizados:** Geração e exportação de relatórios de desempenho em PDF.
-- **Feedback em Tempo Real:** Corrige, mostra acertos e erros, e sugere pontos de melhoria assim que o simulado é concluído.
-- **Interface Intuitiva:** Navegação simples e responsiva, compatível com dispositivos móveis.
+- **Simulados Personalizados:** Geração dinâmica de simulados com base no desempenho e preferências do usuário
+- **Banco de Questões do ENEM:** Utiliza questões reais e/ou baseadas no formato oficial do exame
+- **Relatórios em PDF:** Geração e exportação de relatórios de desempenho em PDF
+- **Feedback em Tempo Real:** Correção imediata com análise de acertos e erros, incluindo sugestões de melhoria
+- **Interface Responsiva:** Design intuitivo e adaptável para dispositivos móveis e desktop
 
 ---
 
@@ -66,13 +72,13 @@ Acesse a versão online: [https://simulado-agil.vercel.app/](https://simulado-ag
 
 ### 1. Versão Online
 
-Acesse diretamente pelo navegador: [https://simulado-agil.vercel.app/](https://simulado-agil.vercel.app/)
+Acesse diretamente pelo navegador: [https://simulado.site](https://simulado.site)
 
-### 2. Versão Local
+### 2. Executar Localmente
 
 #### Pré-requisitos
 
-- [Node.js](https://nodejs.org/) (>= v14)
+- [Node.js](https://nodejs.org/) (>= v16)
 - [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
 
 #### Instalação
@@ -83,6 +89,9 @@ git clone https://github.com/DaniDMoura/SimuladorAgil.git
 
 # Acesse a pasta do projeto
 cd SimuladorAgil
+
+# Navegue até o diretório do frontend
+cd client
 
 # Instale as dependências
 npm install
@@ -99,37 +108,37 @@ npm run dev
 yarn dev
 ```
 
-Abra [http://localhost:3000](http://localhost:3000) no navegador para visualizar o projeto.
+Abra [http://localhost:5173](http://localhost:5173) no navegador para visualizar o projeto.
 
-#### Configurar conexão com a API
+#### Configuração da API
 
-Por padrão, o frontend está configurado para consumir a API pública em [https://api-simulado-generator.fly.dev/](https://api-simulado-generator.fly.dev/).
+Por padrão, o frontend está configurado para consumir a API hospedada no Render: [https://api-simulado-generator.onrender.com](https://api-simulado-generator.onrender.com)
 
 ---
 
 ## Como Contribuir
 
-1. Faça um fork do projeto.
+1. Faça um fork do projeto
 2. Crie uma branch para sua feature (`git checkout -b feature/minha-feature`)
-3. Commit suas alterações (`git commit -m 'feat: [sua feature]'`)
-4. Faça push para sua branch (`git push origin feature/minha-feature`)
-5. Abra um Pull Request neste repositório.
+3. Faça commit das suas alterações (`git commit -m 'feat: adiciona nova funcionalidade'`)
+4. Faça push para a branch (`git push origin feature/minha-feature`)
+5. Abra um Pull Request
 
-Consulte as [issues](https://github.com/DaniDMoura/SimuladorAgil/issues) para ver ideias de melhorias, bugs ou novas features.
+Consulte as [issues](https://github.com/DaniDMoura/SimuladorAgil/issues) para ver sugestões de melhorias, bugs reportados ou novas funcionalidades.
 
 ---
 
 ## Licença
 
-Distribuído sob a Licença GNU General Public License v3.0. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Distribuído sob a Licença GNU General Public License v3.0. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
 ## Contato
 
-- Desenvolvedor: [@DaniDMoura](https://github.com/DaniDMoura)
-- Dúvidas, sugestões ou feedbacks: Utilize as [issues](https://github.com/DaniDMoura/SimuladorAgil/issues)
+- **Desenvolvedor:** [@DaniDMoura](https://github.com/DaniDMoura)
+- **Suporte:** Para dúvidas, sugestões ou feedback, utilize as [issues](https://github.com/DaniDMoura/SimuladorAgil/issues) do projeto
 
 ---
 
-> Este projeto está em constante evolução. Sinta-se à vontade para contribuir!
+> Este projeto está em constante evolução. Contribuições são bem-vindas!

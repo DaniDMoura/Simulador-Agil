@@ -10,7 +10,10 @@ async def get_questions(number_questions: int,
                         ciencias_natureza: bool,
                         ciencias_humanas: bool,
                         matematica: bool,
-                        linguagens: bool ) -> List[Dict[str, object]]:
+                        linguagens: bool,
+                        min_year: int,
+                        max_year: int,
+                        ) -> List[Dict[str, object]]:
     total_questions = 0
     dados = []
     area_filters = []
@@ -33,10 +36,10 @@ async def get_questions(number_questions: int,
         return []
 
     async with httpx.AsyncClient(timeout=10) as client:
-        limit = 15
+        limit = 5
         while total_questions < number_questions and repeticoes < max_repeticoes:
             offset = random.randint(0, 180)
-            year = random.randint(2009, 2023)
+            year = random.randint(min_year, max_year)
 
             url = f'https://api.enem.dev/v1/exams/{year}/questions'
             params = {'offset': offset, 'limit': limit}
