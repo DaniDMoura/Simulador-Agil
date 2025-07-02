@@ -151,7 +151,7 @@ docker-compose up --build
 
 - O Docker irá construir imagens para o frontend e backend automaticamente.
 - Os containers serão iniciados:
-  - O frontend estará disponível em: [http://localhost:3000](http://localhost:3000)
+  - O frontend estará disponível em: [http://localhost](http://localhost)
   - O backend estará disponível em: [http://localhost:8000](http://localhost:8000) (ou na porta configurada no docker-compose)
 - O frontend já estará configurado para consumir a API do backend local.
 
