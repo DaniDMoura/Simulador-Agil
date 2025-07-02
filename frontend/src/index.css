@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Granaina-limpia';
+  src: url('/fonts/Granaina-limpia.ttf.woff') format('woff');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Noto-Serif';
+  src: url('/fonts/NotoSerif-VariableFont_wdth,wght.ttf') format('truetype');
+  font-display: swap;
+}
+@theme {
+  --font-family-granaina: "Granaina-limpia", ui-sans-serif, system-ui, sans-serif;
+  --font-family-primary: "Noto-Serif", ui-sans-serif, system-ui, sans-serif;
+  --animate-appear: appear 0.7s ease forwards 0.3s;
+  --animate-appear2: appear 0.3s ease forwards;
+  --animate-disappear: disappear 0.3s ease-in-out;
+  --animate-appearDialog: appearDialog 10s ease-in-out;
+}
+body{
+  background-color:#111010;
+  font-family: var(--font-family-primary);
+}
+
+@keyframes appear {
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes disappear {
+  100%{
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+@keyframes appearDialog {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
