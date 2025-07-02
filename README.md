@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img width="192" src="client/public/icons/icon-192.png" alt="Logo SimuladorÁgil">
+  <img width="192" src="frontend/public/icons/icon-192.png" alt="Logo SimuladorÁgil">
   <h1>Simulador<b>Ágil</b></h1>
   <p>Simulador inteligente que gera simulados personalizados do ENEM</p>
   <a href="https://github.com/sponsors/DaniDMoura">
