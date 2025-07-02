@@ -7,13 +7,9 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-<<<<<<< HEAD:server/simulado_gen/main.py
     allow_origins=['http://localhost:5173',
                    'https://simulado-agil.vercel.app',
                    'https://www.simulado.site'],
-=======
-    allow_origins=['http://localhost:5173',],
->>>>>>> 7bafad2 (Added container for easy mounting):backend/simulado_gen/main.py
     allow_credentials=True,
     allow_methods=['*'],
     allow_headers=['*'],
